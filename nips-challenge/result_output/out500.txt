@@ -1,0 +1,415 @@
+creating model 0: basic_model
+creating model 1: variant_model_1
+creating model 2: variant_model_2
+Initialization done after 41.2717170715 sec
+batch 1
+blackbox-attacker -- iternum: 10, time: 1238.27 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.2, 0.3]
+time elapsed: 1285.67
+batch 2
+blackbox-attacker -- iternum: 10, time: 1220.48 sec, train_errors: [0.8], test_errors: []
+original evaluation errors: [0.8, 0.8]
+time elapsed: 2509.77
+batch 3
+blackbox-attacker -- iternum: 10, time: 1214.11 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.6]
+time elapsed: 3727.45
+batch 4
+blackbox-attacker -- iternum: 10, time: 1212.41 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.1, 0.3]
+time elapsed: 4943.47
+batch 5
+blackbox-attacker -- iternum: 10, time: 1211.51 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.5, 0.6]
+time elapsed: 6158.37
+batch 6
+blackbox-attacker -- iternum: 10, time: 1210.83 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.2, 0.3]
+time elapsed: 7372.63
+batch 7
+blackbox-attacker -- iternum: 10, time: 1206.16 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.5, 0.4]
+time elapsed: 8582.27
+batch 8
+blackbox-attacker -- iternum: 10, time: 1208.28 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.5, 0.8]
+time elapsed: 9794.04
+batch 9
+blackbox-attacker -- iternum: 10, time: 1206.41 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.3, 0.3]
+time elapsed: 11003.9
+batch 10
+blackbox-attacker -- iternum: 10, time: 1209.05 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.5, 0.4]
+original overall evaluation errors: [0.42 0.48]
+time elapsed: 12216.4
+batch 11
+blackbox-attacker -- iternum: 10, time: 1205.78 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 13425.6
+batch 12
+blackbox-attacker -- iternum: 10, time: 1205.87 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.6, 0.7]
+time elapsed: 14635
+batch 13
+blackbox-attacker -- iternum: 10, time: 1209.23 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.3, 0.5]
+time elapsed: 15847.8
+batch 14
+blackbox-attacker -- iternum: 10, time: 1208.96 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.3]
+time elapsed: 17060.1
+batch 15
+blackbox-attacker -- iternum: 10, time: 1204.5 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 18268.2
+batch 16
+blackbox-attacker -- iternum: 10, time: 1206.89 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 19478.5
+batch 17
+blackbox-attacker -- iternum: 10, time: 1206.77 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.3, 0.5]
+time elapsed: 20688.8
+batch 18
+blackbox-attacker -- iternum: 10, time: 1204.55 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.6]
+time elapsed: 21896.8
+batch 19
+blackbox-attacker -- iternum: 10, time: 1206.57 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.2, 0.3]
+time elapsed: 23106.8
+batch 20
+blackbox-attacker -- iternum: 10, time: 1207.57 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.5, 0.7]
+original overall evaluation errors: [0.415 0.485]
+time elapsed: 24317.8
+batch 21
+blackbox-attacker -- iternum: 10, time: 1224.78 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 25546.3
+batch 22
+blackbox-attacker -- iternum: 10, time: 1231.78 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.7]
+time elapsed: 26781.7
+batch 23
+blackbox-attacker -- iternum: 10, time: 1234.46 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.7]
+time elapsed: 28019.9
+batch 24
+blackbox-attacker -- iternum: 10, time: 1232.68 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 29256.3
+batch 25
+blackbox-attacker -- iternum: 10, time: 1232.89 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.7, 0.7]
+time elapsed: 30493.1
+batch 26
+blackbox-attacker -- iternum: 10, time: 1233.04 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.3, 0.4]
+time elapsed: 31729.9
+batch 27
+blackbox-attacker -- iternum: 10, time: 1232.7 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 32966.4
+batch 28
+blackbox-attacker -- iternum: 10, time: 1234.56 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 34204.6
+batch 29
+blackbox-attacker -- iternum: 10, time: 1230.66 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.7, 0.7]
+time elapsed: 35439
+batch 30
+blackbox-attacker -- iternum: 10, time: 1208.82 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.3, 0.4]
+original overall evaluation errors: [0.44       0.50666667]
+time elapsed: 36651.8
+batch 31
+blackbox-attacker -- iternum: 10, time: 1208.22 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.7]
+time elapsed: 37863.6
+batch 32
+blackbox-attacker -- iternum: 10, time: 1210.38 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.3, 0.4]
+time elapsed: 39077.9
+batch 33
+blackbox-attacker -- iternum: 10, time: 1209.03 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.6]
+time elapsed: 40290.8
+batch 34
+blackbox-attacker -- iternum: 10, time: 1212.14 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.3, 0.4]
+time elapsed: 41507
+batch 35
+blackbox-attacker -- iternum: 10, time: 1213.76 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.5]
+time elapsed: 42724.6
+batch 36
+blackbox-attacker -- iternum: 10, time: 1212.99 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 43941.3
+batch 37
+blackbox-attacker -- iternum: 10, time: 1212.98 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.3, 0.3]
+time elapsed: 45157.8
+batch 38
+blackbox-attacker -- iternum: 10, time: 1214.42 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 46375.9
+batch 39
+blackbox-attacker -- iternum: 10, time: 1212.75 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.5, 0.6]
+time elapsed: 47592.1
+batch 40
+blackbox-attacker -- iternum: 10, time: 1212.53 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.3, 0.4]
+original overall evaluation errors: [0.4325 0.5025]
+time elapsed: 48808.2
+batch 41
+blackbox-attacker -- iternum: 10, time: 1212.8 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.3, 0.4]
+time elapsed: 50024.5
+batch 42
+blackbox-attacker -- iternum: 10, time: 1216.02 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 51244
+batch 43
+blackbox-attacker -- iternum: 10, time: 1212.94 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.3, 0.4]
+time elapsed: 52460.5
+batch 44
+blackbox-attacker -- iternum: 10, time: 1212.96 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.6, 0.6]
+time elapsed: 53677.1
+batch 45
+blackbox-attacker -- iternum: 10, time: 1212.93 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 54893.4
+batch 46
+blackbox-attacker -- iternum: 10, time: 1211.1 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 56108
+batch 47
+blackbox-attacker -- iternum: 10, time: 1213.33 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.8]
+time elapsed: 57325
+batch 48
+blackbox-attacker -- iternum: 10, time: 1219.61 sec, train_errors: [0.8], test_errors: []
+original evaluation errors: [0.7, 0.7]
+time elapsed: 58548.2
+batch 49
+blackbox-attacker -- iternum: 10, time: 1212.08 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.2, 0.3]
+time elapsed: 59763.9
+batch 50
+blackbox-attacker -- iternum: 10, time: 1221 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.2, 0.2]
+original overall evaluation errors: [0.43 0.5 ]
+time elapsed: 60988.3
+batch 51
+blackbox-attacker -- iternum: 10, time: 1223.49 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.5]
+time elapsed: 62215.2
+batch 52
+blackbox-attacker -- iternum: 10, time: 1223.19 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.0, 0.2]
+time elapsed: 63442
+batch 53
+blackbox-attacker -- iternum: 10, time: 1220.77 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.3]
+time elapsed: 64666.3
+batch 54
+blackbox-attacker -- iternum: 10, time: 1231.2 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.2, 0.2]
+time elapsed: 65901.1
+batch 55
+blackbox-attacker -- iternum: 10, time: 1243.45 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.4]
+time elapsed: 67148.1
+batch 56
+blackbox-attacker -- iternum: 10, time: 1251.84 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 68403.5
+batch 57
+blackbox-attacker -- iternum: 10, time: 1248.87 sec, train_errors: [0.1], test_errors: []
+original evaluation errors: [0.1, 0.1]
+time elapsed: 69655.9
+batch 58
+blackbox-attacker -- iternum: 10, time: 1223.93 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.2, 0.2]
+time elapsed: 70883.5
+batch 59
+blackbox-attacker -- iternum: 10, time: 1224.9 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.2, 0.4]
+time elapsed: 72111.8
+batch 60
+blackbox-attacker -- iternum: 10, time: 1227.68 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.8]
+original overall evaluation errors: [0.41333333 0.47666667]
+time elapsed: 73343.1
+batch 61
+blackbox-attacker -- iternum: 10, time: 1227.93 sec, train_errors: [0.1], test_errors: []
+original evaluation errors: [0.1, 0.1]
+time elapsed: 74574.4
+batch 62
+blackbox-attacker -- iternum: 10, time: 1232.46 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.3, 0.3]
+time elapsed: 75810.3
+batch 63
+blackbox-attacker -- iternum: 10, time: 1243.77 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.6]
+time elapsed: 77057.7
+batch 64
+blackbox-attacker -- iternum: 10, time: 1249.03 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 78310.3
+batch 65
+blackbox-attacker -- iternum: 10, time: 1232.19 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.6, 0.6]
+time elapsed: 79545.9
+batch 66
+blackbox-attacker -- iternum: 10, time: 1231.6 sec, train_errors: [0.8], test_errors: []
+original evaluation errors: [0.4, 0.7]
+time elapsed: 80781
+batch 67
+blackbox-attacker -- iternum: 10, time: 1227.45 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 82012
+batch 68
+blackbox-attacker -- iternum: 10, time: 1227.49 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 83242.8
+batch 69
+blackbox-attacker -- iternum: 10, time: 1252.15 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.4, 0.3]
+time elapsed: 84498.5
+batch 70
+blackbox-attacker -- iternum: 10, time: 1252.78 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.5, 0.4]
+original overall evaluation errors: [0.41142857 0.47      ]
+time elapsed: 85754.8
+batch 71
+blackbox-attacker -- iternum: 10, time: 1229.72 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.6]
+time elapsed: 86988
+batch 72
+blackbox-attacker -- iternum: 10, time: 1241.31 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.8, 0.7]
+time elapsed: 88232.9
+batch 73
+blackbox-attacker -- iternum: 10, time: 1241.15 sec, train_errors: [0.8], test_errors: []
+original evaluation errors: [0.9, 0.8]
+time elapsed: 89477.5
+batch 74
+blackbox-attacker -- iternum: 10, time: 1237.02 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 90718.1
+batch 75
+blackbox-attacker -- iternum: 10, time: 1249.23 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.7, 0.7]
+time elapsed: 91970.9
+batch 76
+blackbox-attacker -- iternum: 10, time: 1249.84 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.3, 0.4]
+time elapsed: 93224.2
+batch 77
+blackbox-attacker -- iternum: 10, time: 1254.74 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.4]
+time elapsed: 94482.5
+batch 78
+blackbox-attacker -- iternum: 10, time: 1286.86 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 95772.8
+batch 79
+blackbox-attacker -- iternum: 10, time: 1283.63 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 97059.8
+batch 80
+blackbox-attacker -- iternum: 10, time: 1285.58 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.6, 0.6]
+original overall evaluation errors: [0.43    0.48125]
+time elapsed: 98348.9
+batch 81
+blackbox-attacker -- iternum: 10, time: 1287.15 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 99639.5
+batch 82
+blackbox-attacker -- iternum: 10, time: 1285.64 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 100929
+batch 83
+blackbox-attacker -- iternum: 10, time: 1281.26 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 102213
+batch 84
+blackbox-attacker -- iternum: 10, time: 1283.76 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 103501
+batch 85
+blackbox-attacker -- iternum: 10, time: 1282.33 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.4]
+time elapsed: 104786
+batch 86
+blackbox-attacker -- iternum: 10, time: 1282.25 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.3]
+time elapsed: 106072
+batch 87
+blackbox-attacker -- iternum: 10, time: 1280.46 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 107356
+batch 88
+blackbox-attacker -- iternum: 10, time: 1255.8 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.6]
+time elapsed: 108616
+batch 89
+blackbox-attacker -- iternum: 10, time: 1252.77 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.4, 0.5]
+time elapsed: 109872
+batch 90
+blackbox-attacker -- iternum: 10, time: 1251.67 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.4, 0.4]
+original overall evaluation errors: [0.43       0.47777778]
+time elapsed: 111127
+batch 91
+blackbox-attacker -- iternum: 10, time: 1243.26 sec, train_errors: [0.8], test_errors: []
+original evaluation errors: [0.6, 0.7]
+time elapsed: 112374
+batch 92
+blackbox-attacker -- iternum: 10, time: 1242.72 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.4, 0.3]
+time elapsed: 113620
+batch 93
+blackbox-attacker -- iternum: 10, time: 1244.41 sec, train_errors: [0.5], test_errors: []
+original evaluation errors: [0.5, 0.5]
+time elapsed: 114868
+batch 94
+blackbox-attacker -- iternum: 10, time: 1243.19 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.6, 0.8]
+time elapsed: 116115
+batch 95
+blackbox-attacker -- iternum: 10, time: 1242.14 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.4, 0.6]
+time elapsed: 117361
+batch 96
+blackbox-attacker -- iternum: 10, time: 1242.44 sec, train_errors: [0.6], test_errors: []
+original evaluation errors: [0.5, 0.6]
+time elapsed: 118607
+batch 97
+blackbox-attacker -- iternum: 10, time: 1241.07 sec, train_errors: [0.3], test_errors: []
+original evaluation errors: [0.3, 0.3]
+time elapsed: 119851
+batch 98
+blackbox-attacker -- iternum: 10, time: 1242.63 sec, train_errors: [0.7], test_errors: []
+original evaluation errors: [0.6, 0.7]
+time elapsed: 121098
+batch 99
+blackbox-attacker -- iternum: 10, time: 1242.14 sec, train_errors: [0.2], test_errors: []
+original evaluation errors: [0.3, 0.3]
+time elapsed: 122343
+batch 100
+blackbox-attacker -- iternum: 10, time: 1242.18 sec, train_errors: [0.4], test_errors: []
+original evaluation errors: [0.2, 0.4]
+original overall evaluation errors: [0.431 0.482]
+time elapsed: 123589
+DONE: Processed 1000.0 images in 123588.935393 sec
