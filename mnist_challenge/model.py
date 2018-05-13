@@ -5,12 +5,14 @@ https://www.tensorflow.org/get_started/mnist/pros
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
-import math
 import tensorflow as tf
+from denoisers import iterative_clustering_layer
 
 def discretize(x, alpha):
     return tf.sigmoid(alpha * (x - 0.5))
+
+def adaptive_discretize(x, alpha, noise_level):
+    return iterative_clustering_layer(source=x, n_clusters=2, sigma=20, alpha=alpha, noise_level_1=noise_level, noise_level_2=noise_level)
 
 class Model(object):
   def __init__(self):
@@ -18,14 +20,14 @@ class Model(object):
     self.y_input = tf.placeholder(tf.int64, shape = [None])
 
     self.x_image = tf.reshape(self.x_input, [-1, 28, 28, 1])
-
-    ksize = 1
-    stride = 2
+    # ksize = 1
+    # stride = 2
     image = self.x_image
     # image = tf.nn.max_pool(image, [1,ksize,ksize,1], [1,stride,stride,1], 'VALID')
 
+    image = adaptive_discretize(image, alpha = 20, noise_level = 0.15)
     # image = image + tf.random_normal(tf.shape(image)) * 0.05
-    image = discretize(image + tf.random_normal(tf.shape(image)) * 0.0, alpha=3)
+    # image = discretize(image + tf.random_normal(tf.shape(image)) * 0.0, alpha=3)
 
     # image = tf.image.resize_images(image, [28, 28])
 
