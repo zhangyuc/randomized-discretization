@@ -10,7 +10,7 @@ from PIL import Image
 import StringIO
 import tensorflow as tf
 from timeit import default_timer as timer
-import defense_models as models
+import baseline_models as models
 
 slim = tf.contrib.slim
 

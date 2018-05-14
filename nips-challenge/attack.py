@@ -4,14 +4,12 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import os, sys, shutil, math
+import os, sys, shutil
 import numpy as np
-from scipy.stats import norm
 from PIL import Image
 import StringIO
 import tensorflow as tf
 from timeit import default_timer as timer
-import denoisers
 
 slim = tf.contrib.slim
 
@@ -58,10 +56,10 @@ tf.flags.DEFINE_float(
     'margin', 0.01, 'margin parameter in the loss function.')
 
 tf.flags.DEFINE_string(
-    'attack', '2', 'models for whitebox attacking.')
+    'attack', '1', 'models for whitebox attacking.')
 
 tf.flags.DEFINE_string(
-    'test', '2,1', 'models for testing.')
+    'test', '1,2', 'models for testing.')
 
 FLAGS = tf.flags.FLAGS
 
@@ -69,17 +67,6 @@ FLAGS = tf.flags.FLAGS
 
 def string_to_list(s):
     return [int(x) for x in filter(None, s.split(','))]
-
-
-def compress_by_jpeg(images):
-    jpeg_images = np.zeros(images.shape)
-    for i in range(images.shape[0]):
-        buffer = StringIO.StringIO()
-        raw = (((images[i, :, :, :] + 1.0) * 0.5) * 255.0).astype(np.uint8)
-        Image.fromarray(raw).save(buffer, "JPEG", quality=15)
-        jpeg_images[i, :, :, :] = np.array(Image.open(buffer).convert('RGB')).astype(np.float) / 255.0
-    jpeg_images = jpeg_images * 2.0 - 1.0
-    return jpeg_images
 
 def load_labels():
     filename = FLAGS.label_dir
@@ -155,10 +142,6 @@ class Evaluator(object):
             error = 1 - np.mean(correct_prediction.astype(np.float32))
             errors.append(error)
 
-            # margin = np.maximum(0, np.sum(predictions[i] * y_onehot, axis=1) - np.amax(predictions[i] * (1 - y_onehot), axis=1))
-            # margin = np.round(margin, 3)
-            # flog.write(','.join(str(x) for x in margin) + '\n')
-
         errors = [round(x,3) for x in errors]
         print('%s evaluation errors: %s' % (self.name, errors))
 
@@ -205,39 +188,18 @@ class Attacker(object):
 
         # define gradient
         grad = None
-        if loss_type == 'average':
-            self.average_loss = 0
-            for i in attack:
-                self.average_loss -= tf.reduce_mean(
-                    tf.nn.sparse_softmax_cross_entropy_with_logits(logits=models[i].logits, labels=true_label)) / len(
-                    attack)
-            grad = tf.gradients(self.average_loss, image)[0]
-
-        if loss_type == 'mixture':
+        if loss_type == 'cross-entropy':
             softmax_prob_sum = 0
             for i in attack:
                 softmax_prob_sum += tf.reduce_sum(tf.nn.softmax(models[i].logits) * label_mask, axis=1)
             self.mixture_loss = tf.reduce_mean(tf.log(margin + softmax_prob_sum))
             grad = tf.gradients(self.mixture_loss, image)[0]
 
-        if loss_type == 'hinge':
-            hinge_losses = []
-            for i in attack:
-                label_logits = tf.reduce_sum(models[i].logits * label_mask, axis=1)
-                max_logits = tf.reduce_max(models[i].logits - label_mask * 100, axis=1)
-                hinge_losses.append(label_logits - max_logits)
-            self.hinge_loss = tf.reduce_mean(tf.reduce_max(tf.stack(hinge_losses, axis=0), axis=0))
-            grad = tf.gradients(self.hinge_loss, image)[0]
         self.grad = grad
 
         # define optimization step
-        opt = None
-        if optimizer == 'sgd':
-            opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate * max_epsilon)
-            self.all_model_gradient_step = opt.apply_gradients([(tf.sign(grad), image)])
-        if optimizer == 'rmsprop':
-            opt = tf.train.RMSPropOptimizer(learning_rate=learning_rate * max_epsilon, epsilon=1e-9, decay=0.9)
-            self.all_model_gradient_step = opt.apply_gradients([(grad, image)])
+        opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate * max_epsilon)
+        self.all_model_gradient_step = opt.apply_gradients([(tf.sign(grad), image)])
         self.apply_null = opt.apply_gradients([(tf.zeros(image.get_shape().as_list(), dtype=tf.float32), image)])
 
         # define clipping step
@@ -247,12 +209,8 @@ class Attacker(object):
 
         # define custom gradient step
         self.custom_gradient = tf.placeholder(tf.float32, shape=[FLAGS.batch_size, FLAGS.image_height, FLAGS.image_width, 3])
-        if optimizer == 'sgd':
-            opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate * max_epsilon)
-            self.custom_gradient_step = opt.apply_gradients([(tf.sign(self.custom_gradient), image)])
-        if optimizer == 'rmsprop':
-            opt = tf.train.RMSPropOptimizer(learning_rate=learning_rate * max_epsilon, epsilon=1e-9, decay=0.9)
-            self.custom_gradient_step = opt.apply_gradients([(self.custom_gradient, image)])
+        opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate * max_epsilon)
+        self.custom_gradient_step = opt.apply_gradients([(tf.sign(self.custom_gradient), image)])
 
     def run(self, sess, x_batch, iternum, y, gradnum=1):
         start1 = start2 = timer()
@@ -314,7 +272,8 @@ def main(_):
 
         # list of models in our ensemble
         # model 0-5
-        all_models = [models.BasicModel, models.VariantModel1, models.VariantModel2]
+        all_models = [models.BasicModel, models.Gaussian, models.RandMix, models.RandDisc,
+                      models.BitDepth, models.ResizeAndPadding, models.JPEG, models.TVM]
         whitebox_models = string_to_list(FLAGS.attack)
         test = string_to_list(FLAGS.test)
         indices_to_load = [index for index in range(len(all_models)) if
@@ -339,7 +298,7 @@ def main(_):
                                          image=image, true_label=label,
                                          max_epsilon=eps, attack=whitebox_models,
                                          test=[], optimizer='sgd',
-                                         loss_type='mixture', margin=FLAGS.margin,
+                                         loss_type='cross-entropy', margin=FLAGS.margin,
                                          learning_rate=FLAGS.learning_rate)
 
         if len(test) > 0:

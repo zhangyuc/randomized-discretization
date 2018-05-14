@@ -8,6 +8,31 @@ import denoisers
 
 slim = tf.contrib.slim
 
+class ResizeAndPadding(object):
+    """Model class for CleverHans library."""
+
+    def __init__(self, num_classes, batch_size=None):
+        self.num_classes = num_classes
+        self.built = False
+        self.logits = None
+        self.ckpt = 'ens_adv_inception_resnet_v2.ckpt'
+        self.name = 'ResizeAndPadding'
+
+    def __call__(self, x_input, batch_size=None, is_training=False):
+        """Constructs model and return probabilities for given input."""
+        reuse = True if self.built else None
+        with slim.arg_scope(inception.inception_resnet_v2_arg_scope()):
+            with tf.variable_scope(self.name):
+                x_input = denoisers.resize_and_padding_layer(x_input)
+                logits, end_points = inception.inception_resnet_v2(
+                    x_input, num_classes=self.num_classes, is_training=is_training,
+                    reuse=reuse)
+            preds = tf.argmax(logits, axis=1)
+        self.built = True
+        self.logits = logits
+        self.preds = preds
+        return logits
+
 class BitDepth(object):
     def __init__(self, num_classes, batch_size=None):
         self.num_classes = num_classes
