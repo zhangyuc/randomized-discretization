@@ -29,7 +29,7 @@ tf.flags.DEFINE_string(
     'label_dir', './datasets/labels.csv', 'Input directory with images.')
 
 tf.flags.DEFINE_float(
-    'max_epsilon', 4.0, 'Maximum size of adversarial perturbation.')
+    'max_epsilon', 1.0, 'Maximum size of adversarial perturbation.')
 
 tf.flags.DEFINE_integer(
     'image_width', 299, 'Width of each input images.')
@@ -56,14 +56,15 @@ tf.flags.DEFINE_float(
     'margin', 0.01, 'margin parameter in the loss function.')
 
 tf.flags.DEFINE_string(
-    'attack', '1', 'models for whitebox attacking.')
+    'loss_type', 'cross-entropy', 'type of the loss function (cross-entropy/hinge)')
 
 tf.flags.DEFINE_string(
-    'test', '1,2', 'models for testing.')
+    'attack', '2', 'models for whitebox attacking.')
+
+tf.flags.DEFINE_string(
+    'test', '2,3', 'models for testing.')
 
 FLAGS = tf.flags.FLAGS
-
-# flog = open('log.txt', 'w')
 
 def string_to_list(s):
     return [int(x) for x in filter(None, s.split(','))]
@@ -195,12 +196,16 @@ class Attacker(object):
             self.mixture_loss = tf.reduce_mean(tf.log(margin + softmax_prob_sum))
             grad = tf.gradients(self.mixture_loss, image)[0]
 
-        self.grad = grad
+        if loss_type == 'hinge':
+            hinge_losses = 0
+            for i in attack:
+                label_logits = tf.reduce_sum(models[i].logits * label_mask, axis=1)
+                max_logits = tf.reduce_max(models[i].logits - label_mask * 10000, axis=1)
+                hinge_losses += tf.maximum(label_logits - max_logits, -50)
+            self.hinge_loss = tf.reduce_mean(hinge_losses)
+            grad = tf.gradients(self.hinge_loss, image)[0]
 
-        # define optimization step
-        opt = tf.train.GradientDescentOptimizer(learning_rate=learning_rate * max_epsilon)
-        self.all_model_gradient_step = opt.apply_gradients([(tf.sign(grad), image)])
-        self.apply_null = opt.apply_gradients([(tf.zeros(image.get_shape().as_list(), dtype=tf.float32), image)])
+        self.grad = grad
 
         # define clipping step
         clipped_image = tf.clip_by_value(image, image_input - max_epsilon, image_input + max_epsilon)
@@ -216,10 +221,6 @@ class Attacker(object):
         start1 = start2 = timer()
 
         sess.run(self.assign_image, feed_dict={self.image_input: x_batch})
-        if self.optimizer == 'rmsprop':
-            for _ in range(200):
-                sess.run(self.apply_null)
-
         for i in range(iternum):
             if i == 1: start2 = timer()
             sample_mean = np.zeros(list(x_batch.shape))
@@ -298,7 +299,7 @@ def main(_):
                                          image=image, true_label=label,
                                          max_epsilon=eps, attack=whitebox_models,
                                          test=[], optimizer='sgd',
-                                         loss_type='cross-entropy', margin=FLAGS.margin,
+                                         loss_type=FLAGS.loss_type, margin=FLAGS.margin,
                                          learning_rate=FLAGS.learning_rate)
 
         if len(test) > 0:
