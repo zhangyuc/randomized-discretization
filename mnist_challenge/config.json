@@ -1,6 +1,6 @@
 {
   "_comment": "===== MODEL CONFIGURATION =====",
-  "model_dir": "models/adv_trained",
+  "model_dir": "models/natural",
 
   "_comment": "===== TRAINING CONFIGURATION =====",
   "random_seed": 4557077,
@@ -16,10 +16,15 @@
   "eval_on_cpu": true,
 
   "_comment": "=====ADVERSARIAL EXAMPLES CONFIGURATION=====",
-  "epsilon": 0.1,
+  "epsilon": 0.30,
   "k": 40,
-  "a": 0.04,
+  "a": 0,
+  "alpha": 200,
+  "ksize": 2,
+  "stride": 7,
+  "gradnum": 20,
+  "testnum": 20,
   "random_start": true,
   "loss_func": "xent",
-  "store_adv_path": "attack.npy"
+  "store_adv_path": "ds-attack-030.npy"
 }

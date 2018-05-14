@@ -13,7 +13,7 @@ import run_attack
 
 
 class LinfPGDAttack:
-  def __init__(self, model, epsilon, k, a, random_start, loss_func):
+  def __init__(self, model, epsilon, k, a, random_start, loss_func, gradnum):
     """Attack parameter initialization. The attack performs k steps of
        size a, while always staying within epsilon from the initial
        point."""
@@ -21,6 +21,7 @@ class LinfPGDAttack:
     self.epsilon = epsilon
     self.k = k
     self.a = a
+    self.gradnum = gradnum
     self.rand = random_start
 
     if loss_func == 'xent':
@@ -49,7 +50,7 @@ class LinfPGDAttack:
       x = np.copy(x_nat)
 
     for i in range(self.k):
-      m = 1
+      m = self.gradnum
       grad = 0
       for _ in range(m):
         grad += sess.run(self.grad, feed_dict={self.model.x_input: x, self.model.y_input: y}) / m
@@ -79,13 +80,14 @@ if __name__ == '__main__':
     print('No model found')
     sys.exit()
 
-  model = Model()
+  model = Model(config['alpha'], config['ksize'], config['stride'])
   attack = LinfPGDAttack(model,
                          config['epsilon'],
                          config['k'],
                          config['epsilon'] / config['k'] * 4,
                          config['random_start'],
-                         config['loss_func'])
+                         config['loss_func'],
+                         config['gradnum'])
   saver = tf.train.Saver()
 
   mnist = input_data.read_data_sets('MNIST_data', one_hot=False)

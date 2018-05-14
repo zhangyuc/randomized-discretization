@@ -15,21 +15,17 @@ def adaptive_discretize(x, alpha, noise_level):
     return iterative_clustering_layer(source=x, n_clusters=2, sigma=20, alpha=alpha, noise_level_1=noise_level, noise_level_2=noise_level)
 
 class Model(object):
-  def __init__(self):
+  def __init__(self, alpha, ksize, stride):
     self.x_input = tf.placeholder(tf.float32, shape = [None, 784])
     self.y_input = tf.placeholder(tf.int64, shape = [None])
 
     self.x_image = tf.reshape(self.x_input, [-1, 28, 28, 1])
-    # ksize = 1
-    # stride = 2
     image = self.x_image
-    # image = tf.nn.max_pool(image, [1,ksize,ksize,1], [1,stride,stride,1], 'VALID')
-
-    image = adaptive_discretize(image, alpha = 20, noise_level = 0.15)
+    image = tf.nn.max_pool(image, [1,ksize,ksize,1], [1,stride,stride,1], 'VALID')
+    image = adaptive_discretize(image, alpha = alpha, noise_level = 0.15)
     # image = image + tf.random_normal(tf.shape(image)) * 0.05
     # image = discretize(image + tf.random_normal(tf.shape(image)) * 0.0, alpha=3)
-
-    # image = tf.image.resize_images(image, [28, 28])
+    image = tf.image.resize_images(image, [28, 28])
 
     # first convolutional layer
     W_conv1 = self._weight_variable([5,5,1,32])

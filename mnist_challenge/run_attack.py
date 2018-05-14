@@ -18,10 +18,10 @@ import numpy as np
 
 from model import Model
 
-def run_attack(checkpoint, x_adv, epsilon):
+def run_attack(checkpoint, x_adv, epsilon, alpha, ksize, stride, testnum):
   mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
 
-  model = Model()
+  model = Model(alpha, ksize, stride)
 
   saver = tf.train.Saver()
 
@@ -42,8 +42,6 @@ def run_attack(checkpoint, x_adv, epsilon):
   y_pred = [] # label accumulator
 
   with tf.Session() as sess:
-    testnum = 1
-
     # Restore the checkpoint
     saver.restore(sess, checkpoint)
 
@@ -97,4 +95,4 @@ if __name__ == '__main__':
                                                               np.amin(x_adv),
                                                               np.amax(x_adv)))
   else:
-    run_attack(checkpoint, x_adv, config['epsilon'])
+    run_attack(checkpoint, x_adv, config['epsilon'], config['alpha'], config['ksize'], config['stride'], config['testnum'])
