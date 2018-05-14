@@ -39,7 +39,7 @@ class RandDisc(object):
         self.built = False
         self.logits = None
         self.ckpt = model_file
-        self.name = 'variant_model_1'
+        self.name = 'RandDisc'
 
     def __call__(self, x_input, batch_size=None, is_training=False):
         """Constructs model and return probabilities for given input."""
@@ -64,7 +64,7 @@ class RandMix(object):
         self.built = False
         self.logits = None
         self.ckpt = model_file
-        self.name = 'variant_model_2'
+        self.name = 'RandMix'
 
     def __call__(self, x_input, batch_size=None, is_training=False):
         """Constructs model and return probabilities for given input."""
